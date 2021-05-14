@@ -7,28 +7,26 @@ function App() {
 
   useEffect(() => {
 
-    let tym=new Date().getMinutes();
+    let time=new Date().getMinutes();
     setInterval( () => {
        setTime(new Date().toLocaleTimeString())
-       if(mode==="Light" && Math.abs(new Date().getMinutes()-tym)===1){
+       if(mode==="Light" && Math.abs(new Date().getMinutes()-time)===1){
            setMode("Dark")
-           tym=new Date().getMinutes()
-       }else if(mode==="Dark" && Math.abs(new Date().getMinutes()-tym)===1){
+           time=new Date().getMinutes()
+       }else if(mode==="Dark" && Math.abs(new Date().getMinutes()-time)===1){
            setMode("Light")
-           tym=new Date().getMinutes()
+           time=new Date().getMinutes()
        }
        // mode==="Light" && Math.abs(new Date().getMinutes-tym)===5?setMode("Dark"):setMode("Light")
      },1000)
-   //   return () => clearInterval(setTime);
+   // return () => clearInterval(setTime);
    }, [mode]);
    return (
-    <div className="b" style={mode==="Light"?parentMode:childMode}>
-      <section>
+      <section style={mode==="Light"?parentMode:childMode}>
         <div className="container" style={mode==="Light"?childMode:parentMode}>
           <h1>{time}</h1>
         </div>
       </section>
-    </div>
     // <div>{time}</div>
   );
 }
